@@ -1,0 +1,18 @@
+<div class="row p-3 shadow-sm my-2">
+    <div class="col" *ngIf="globalStatisticsData">
+        <p class="text-dark h4 text-capitalize bg-light">
+            As of today <span class="text-info h3">{{globalStatisticsData.latest.confirmed}}</span> Confirmed Corona Virus (COVID-19) cases have been reported in the world. 
+            <span class="text-danger h3">{{globalStatisticsData.latest.deaths}}</span> Peoples Dead and <span class="text-success h3">{{globalStatisticsData.latest.recovered}}</span> Persons are recovered.
+            Numbers are still increasing
+        </p>
+        <br>
+        <p class="text-dark h5 text-capitalize">
+            The Corona virus is declared as epidemic in many country. You're Advised to take precautions
+        </p>
+    </div>
+    <div class="col d-flex justify-content-center" *ngIf="!globalStatisticsData">
+        <span class="mx-3 h5">Loading...  </span><div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+    </div>
+</div>

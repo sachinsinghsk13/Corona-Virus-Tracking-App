@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row p-2">
+        <div class="col-6">
+            <input type="text" placeholder="Country" class="form-control" (input)="filterByCountry($event)">
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col d-flex justify-content-center" *ngIf="!rawData">
+            <span class="mx-3 h5">Loading... </span>
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="col" *ngIf="rawData">
+            <table app-location-wise-virus-data-table-rows class="table table-bordered text-center">
+                <tr app-location-wise-virus-data-table-row *ngFor="let item of currentTableViewData.locations"
+                    [data]="item"></tr>
+            </table>
+        </div>
+    </div>
+</div>

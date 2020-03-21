@@ -1,0 +1,8 @@
+<td><img [src]="flag" width="40px" height="40px"></td>
+<td class="lead">{{data.country}}</td>
+<td *ngIf="data.province">{{data.province}}</td>
+<td *ngIf="!data.province">-</td>
+<td>{{data.latest.confirmed}}</td>
+<td>{{data.latest.deaths}}</td>
+<td>{{data.latest.recovered}}</td>
+<td><button class="btn btn-sm btn-outline-dark" [routerLink]="['/locations/',data.country_code]" routerLinkActive="router-link-active" >More Details</button></td>

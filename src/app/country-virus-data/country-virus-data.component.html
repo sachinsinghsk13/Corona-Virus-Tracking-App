@@ -1,0 +1,56 @@
+<div class="container my-2">
+    <div class="row p-2 shadow">
+        <div class="col">
+            <button class="btn btn-success float-right" [routerLink]="['/locations']" routerLinkActive="router-link-active" >Back</button>    
+        </div>
+    </div>
+    <div class="row p-2 shadow" *ngIf="!countryVirusData">
+        <div class="col d-flex justify-content-center">
+            <span class="mx-3 h5">Loading... </span>
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+    </div>
+    <div *ngIf="countryVirusData">
+        <div class="row my-3 shadow p-2" *ngFor="let item of countryVirusData.locations">
+            <div class="col p-2">
+                <p class="text-dark h4"><img [src]="flag" alt="" class="mx-2">
+                    <span
+                        *ngIf="countryVirusData.locations[0].province">{{item.province}},</span>
+                    {{item.country}}</p>
+                <p class="small"></p>
+                <hr>
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item"><span class="lead">Confirmed: </span><span
+                            class="text-info h5">{{item.latest.confirmed}}</span></li>
+                    <li class="list-group-item"><span class="lead">Deaths: </span><span
+                            class="text-danger h5">{{item.latest.deaths}}</span></li>
+                    <li class="list-group-item"><span class="lead">Recovered: </span><span
+                            class="text-success h5">{{item.latest.recovered}}</span></li>
+                </ul>
+                <hr>
+                <h4>Timeline</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Confirmed</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of timelinesToList(item.timelines)">
+                            <td>{{a.date | date : 'longDate'}}</td>
+                            <td class="text-info">{{a.confirmed}}</td>
+                            <td class="text-danger">{{a.deaths}}</td>
+                            <td class="text-success">{{a.recovered}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
